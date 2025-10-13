@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "DEVPROM Link Fixer",
+  "version": "1.0",
+
+  "description": "DEVPROM link fixer helps to fix the links with spaces to well formatte URL liks which replaced by %20 symbol.",
+
+  "icons": {
+    "48": "icons/devprom.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://devprom.e-kama.com/*"],
+      "js": ["devprom_link_fixer.js"]
+    }
+  ]
+}
