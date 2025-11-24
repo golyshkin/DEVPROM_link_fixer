@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "name": "DEVPROM Link Fixer",
-  "version": "1.0",
+  "version": "2.3",
 
-  "description": "DEVPROM link fixer helps to fix the links with spaces to well formatte URL liks which replaced by %20 symbol.",
+  "description": "DEVPROM link fixer and formatter helps to fix and well format the DEVPROM links with spaces or any other problems.",
 
   "icons": {
     "48": "icons/devprom.png"

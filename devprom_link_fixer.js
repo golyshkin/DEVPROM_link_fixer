@@ -1,50 +1,72 @@
 document.addEventListener(
   'click',
   async function (e) {
-    // Находим ближайшую кнопку
+    // get nearest button
     const button = e.target.closest('button.clipboard, a.clipboard');
 
-    // Если это не кнопка — выходим
     if (!button) return;
 
-    // Проверяем наличие класса 'clipboard'
+    // check clipboard
     if (!button.classList.contains('clipboard')) return;
 
-    // Берём текст из data-clipboard-text
+    // get data from clipboard
     const originalText = button.getAttribute('data-clipboard-text');
     if (!originalText) return;
     let reqCaption = null
     const parts = originalText.split(' - ');
 
-    if (parts.length === 2) {
-      const numberPart = parts[1].trim();
+    if (parts.length === 2) 
+    {
+      const numberPart = parts[1].split( "?" )[0].trim();
+
       if (/^\d+$/.test(numberPart)) {
         const captionId = 'WikiPageCaption' + numberPart
         console.log('The DEVPROM requirement id: ', captionId);
         captionElement = document.getElementById(captionId)
-        if (captionElement) {
-          reqCaption = ' ' + captionElement.innerText;
+
+        if ( captionElement ) 
+        {
+          reqCaption = ' - ' + captionElement.innerText;
           console.log('The DEVPROM requirement caption: ', reqCaption);
-        } else {
-          const elements = document.querySelectorAll(`[objectid="${numberPart}"]`);
-          const firstWithTitle = Array.from(elements).find(el => el.hasAttribute('title'));
-          if (firstWithTitle) {
-            reqCaption = ' ' + firstWithTitle.innerText;
-          } else {
-            console.log('The DEVPROM requirement is not found: ', numberPart);
+        } 
+        else 
+        {
+          reqCaption = getTitle( numberPart );
+
+          if ( reqCaption.length == 0 )
+          {
+             // One more chance to find a fucking DEVPROM requirement title
+             const elements = document.querySelectorAll(`[objectid="${numberPart}"]`);
+             const firstWithTitle = Array.from(elements).find(el => el.hasAttribute('title'));
+    
+             if (firstWithTitle) 
+             {
+               reqCaption = ' - ' + firstWithTitle.innerText;
+             } 
+             else 
+             {
+               console.log('The DEVPROM requirement is not found: ', numberPart);
+             }
           }
         }
       }
     }
+    else
+    {
+       const parts = originalText.split( "/")
+       const title = parts[ parts.length - 1].split("?")[0]
 
-    // Заменит пробелы, кириллицу, и др.
+	    reqCaption = getTitle( title );
+    }
+
+    // replace spaces
     const modifiedText = encodeURI(originalText) + (reqCaption ?? '');
 
-    // Блокируем поведение оригинального обработчика
+    // consume event
     e.preventDefault();
     e.stopImmediatePropagation();
 
-    // Копируем в буфер обмена
+    // copy to clipboard
     try {
       await navigator.clipboard.writeText(modifiedText);
       console.log('The DEVPROM requirement copied to clipboard:', modifiedText);
@@ -60,5 +82,27 @@ document.addEventListener(
         }
     }
   },
-  true // Перехватывающее событие (на фазе захвата)
+  true // register event
 );
+
+function getTitle( findStr )
+{
+   const elements = document.getElementsByClassName("fancytree-title");
+
+   if ( elements.length > 0 )
+   {
+      for ( let i = 0; i < elements.length; i++ ) 
+      {
+         if ( elements[i].innerText.includes( findStr ) ) 
+         {
+             const splitCaption = elements[i].innerText.split(findStr).map(splitCaption => splitCaption.trim());
+             let reqCaption = ' - ' + splitCaption[splitCaption.length - 1];
+
+             console.log('The DEVPROM requirement caption: ', reqCaption);
+             return reqCaption;
+         }
+      }
+   }
+    
+   return "";
+}
