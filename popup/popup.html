@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    textarea {
+      width: 100%;
+      height: 60px;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 8px 16px;
+      background-color: #0060df;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #003eaa;
+    }
+    .status {
+      font-size: 12px;
+      color: green;
+      text-align: right;
+      width: 100%;
+      position: absolute;
+    }
+    .error{
+      font-size: 12px;
+      color: red;
+      text-align: right;
+      width: 100%;
+      position: absolute;
+    }
+    .wrapper{
+	    position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <strong>URL Format Template:</strong>
+    <textarea name="ta" autofocus id="textInput" placeholder="${url} - ${desc}"></textarea>
+    <table>
+    	<tr>
+    		<td>
+				<input type="radio" id="rdefault" name="option" value="Default" />
+				<label for="default">Default</label>
+       </td>
+    		<td>
+				<input type="radio" id="rjira" name="option" value="Jira" />
+				<label for="jira">Jira</label>
+        </td>
+    		<td>
+				<input type="radio" id="rmd" name="option" value="MD" />
+				<label for="md">MD</label>
+        </td>
+    	</tr>
+    </table>
+    <button id="saveButton">CLOSE</button>
+	 <div class='wrapper'>
+		<div id="status" class="status"></div>
+		<div id="error" class="error"></div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

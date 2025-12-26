@@ -1,18 +1,50 @@
 {
   "manifest_version": 2,
   "name": "DEVPROM Link Fixer",
-  "version": "2.3",
-
-  "description": "DEVPROM link fixer and formatter helps to fix and well format the DEVPROM links with spaces or any other problems.",
-
+  "version": "3.0",
+  "description": "DEVPROM link fixes and formats the DEVPROM ugly links to TXT/HTML user friendly MD, JIRA & Devprom format for further usage.",
+  "author": "Alexander.Golyshkin",
+  "homepage_url": "https://github.com/golyshkin/DEVPROM_link_fixer",
+  "permissions": [
+    "storage"
+  ],
   "icons": {
-    "48": "icons/devprom.png"
+    "48": "icons/icon.png"
   },
-
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+D",
+        "mac": "Command+Alt+D"
+      },
+      "description": "Enable/Disable DEVPROM Fixer Plugin."
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "Alexander.Golyshkin@ya.ru",
+      "strict_min_version": "60.0",
+      "data_collection_permissions": {
+            "required": [ "none" ]
+          }    
+    }
+  },
+  "browser_action": {
+    "default_title": "plugin",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "48": "icons/icon.png"
+    }
+  },
   "content_scripts": [
     {
-      "matches": ["*://devprom.e-kama.com/*"],
-      "js": ["devprom_link_fixer.js"]
+      "all_frames": true,
+      "matches": [
+        "*://devprom.e-kama.com/**"
+      ],
+      "js": [
+        "devprom_link_fixer.js"
+      ]
     }
   ]
 }

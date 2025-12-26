@@ -26,7 +26,7 @@ document.addEventListener(
 
         if ( captionElement ) 
         {
-          reqCaption = ' - ' + captionElement.innerText;
+          reqCaption = captionElement.innerText;
           console.log('The DEVPROM requirement caption: ', reqCaption);
         } 
         else 
@@ -41,7 +41,7 @@ document.addEventListener(
     
              if (firstWithTitle) 
              {
-               reqCaption = ' - ' + firstWithTitle.innerText;
+               reqCaption = firstWithTitle.innerText;
              } 
              else 
              {
@@ -59,8 +59,21 @@ document.addEventListener(
 	    reqCaption = getTitle( title );
     }
 
-    // replace spaces
-    const modifiedText = encodeURI(originalText) + (reqCaption ?? '');
+    pattern = "${url} + ${desc}";
+
+    await browser.storage.local.get('savedText').then(function(result) 
+    {
+      if (result.savedText) 
+      {
+        pattern = result.savedText;
+      }
+    });
+
+	 console.log( pattern );
+    
+    // Final transform
+    modifiedText = pattern.replace( "${url}", encodeURI(originalText) );
+    modifiedText = modifiedText.replace( "${desc}", reqCaption );
 
     // consume event
     e.preventDefault();
@@ -68,7 +81,17 @@ document.addEventListener(
 
     // copy to clipboard
     try {
-      await navigator.clipboard.writeText(modifiedText);
+      const htmlLink = "<a href=\"" + encodeURI(originalText) + "\">" + reqCaption + "</a>";
+      const htmlContent = new Blob([htmlLink], { type: 'text/html' });
+      const textContent = new Blob([modifiedText], { type: 'text/plain' });
+		const clipboardItem = new ClipboardItem({
+				'text/html': htmlContent,
+				'text/plain': textContent
+				});
+      
+      await navigator.clipboard.write([clipboardItem]);      
+      
+      //await navigator.clipboard.writeText(modifiedText);
       console.log('The DEVPROM requirement copied to clipboard:', modifiedText);
     } catch (err) {
       console.error('The DEVPROM requirement copy to clipboard ERROR:', err);
@@ -96,7 +119,7 @@ function getTitle( findStr )
          if ( elements[i].innerText.includes( findStr ) ) 
          {
              const splitCaption = elements[i].innerText.split(findStr).map(splitCaption => splitCaption.trim());
-             let reqCaption = ' - ' + splitCaption[splitCaption.length - 1];
+             let reqCaption = splitCaption[splitCaption.length - 1];
 
              console.log('The DEVPROM requirement caption: ', reqCaption);
              return reqCaption;
