@@ -91,7 +91,6 @@ document.addEventListener(
       
       await navigator.clipboard.write([clipboardItem]);      
       
-      //await navigator.clipboard.writeText(modifiedText);
       console.log('The DEVPROM requirement copied to clipboard:', modifiedText);
     } catch (err) {
       console.error('The DEVPROM requirement copy to clipboard ERROR:', err);
