@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const rDefaultId = document.getElementById('rdefault');
   const rJiraId = document.getElementById('rjira');
   const rMdId = document.getElementById('rmd');
+  const rPumlId = document.getElementById('rpuml');
 
   browser.storage.local.get('savedText').then(function(result) {
     if (result.savedText) {
@@ -19,6 +20,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (result.option) {
       document.getElementById( result.option ).checked = true;
     }
+  });
+
+  rPumlId.addEventListener('click', function() 
+  {
+     browser.storage.local.set({ option: "rpuml" });
+
+     textInput.value = "[[${url} ${desc}]]";
+     const simChangeEvent = new Event('input', { 'bubbles': true });
+     
+     textInput.dispatchEvent(simChangeEvent);
   });
 
   rDefaultId.addEventListener('click', function() 
@@ -45,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
   {
      browser.storage.local.set({ option: "rmd" });
 
-     textInput.value = "[[${url} ${desc}]]";
+     textInput.value = "[${url}](${desc})";
      const simChangeEvent = new Event('input', { 'bubbles': true });
 
      textInput.dispatchEvent(simChangeEvent);

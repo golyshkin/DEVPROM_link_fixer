@@ -1,4 +1,8 @@
-This is a Firefox plugin which fixes the DEVPROM with well formatted URL.
+This is a Firefox plugin which fixes the DEVPROM with well formatted URL and converts to following formats
+1. PUML
+2. MD
+3. JIRA
+4. HTML
 
 The following Devprom URL
 1. https://devprom.e-kama.com/pm/IT_XXX/IT_IVI.Group - 1221916

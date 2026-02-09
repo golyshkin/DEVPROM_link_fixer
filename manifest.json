@@ -1,13 +1,14 @@
 {
   "manifest_version": 2,
   "name": "DEVPROM Link Fixer",
-  "version": "3.0",
-  "description": "DEVPROM link fixes and formats the DEVPROM ugly links to TXT/HTML user friendly MD, JIRA & Devprom format for further usage.",
+  "version": "3.1",
+  "description": "DEVPROM link tool fixes the DEVPROM ugly links to TXT/HTML user friendly MD, PUML, JIRA & HTML formats for further usage.",
   "author": "Alexander.Golyshkin",
   "homepage_url": "https://github.com/golyshkin/DEVPROM_link_fixer",
   "permissions": [
     "storage"
   ],
+  "options_page": "options/options.html",
   "icons": {
     "48": "icons/icon.png"
   },
