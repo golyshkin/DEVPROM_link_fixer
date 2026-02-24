@@ -117,6 +117,7 @@ document.addEventListener(
 function getTitle( findStr )
 {
    const elements = document.getElementsByClassName("fancytree-title");
+   let reqCaption = "";
 
    if ( elements.length > 0 )
    {
@@ -132,6 +133,22 @@ function getTitle( findStr )
          }
       }
    }
+
+   // Lets search in Requirements Registry
+   if ( reqCaption == "" )
+   {
+   	const targetRow = document.querySelector( `tr[object-id="${findStr}"]` );
+
+		if ( targetRow ) 
+		{
+			reqCaption = targetRow.querySelector('.fancytree-title');
     
-   return "";
+			if ( reqCaption ) 
+			{
+				reqCaption = reqCaption.textContent.trim();
+			} 
+		} 
+   }
+    
+   return reqCaption;
 }
