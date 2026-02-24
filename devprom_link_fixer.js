@@ -1,3 +1,5 @@
+const browser = globalThis.browser || chrome;
+
 document.addEventListener(
   'click',
   async function (e) {
@@ -102,7 +104,7 @@ document.addEventListener(
     } catch (err) {
       console.error('The DEVPROM requirement copy to clipboard ERROR:', err);
     }
-    // Удалить меню только если это <a>
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ <a>
     if (button.tagName.toLowerCase() === 'a') {
         const menu = button.closest('div.dropdown-fixed');
         if (menu && menu.classList.contains('open')) {

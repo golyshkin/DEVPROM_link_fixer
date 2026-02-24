@@ -1,3 +1,5 @@
+const browser = globalThis.browser || chrome;
+
 document.addEventListener('DOMContentLoaded', function() {
   const textInput = document.getElementById('textInput');
   const saveButton = document.getElementById('saveButton');
@@ -66,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.close();
   });
 
-  // Автосохранение при изменении текста (опционально)
+  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
   let saveTimeout;
   textInput.addEventListener('input', function() 
   {
