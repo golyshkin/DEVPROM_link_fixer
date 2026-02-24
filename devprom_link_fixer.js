@@ -10,17 +10,21 @@ document.addEventListener(
     if (!button.classList.contains('clipboard')) return;
 
     // get data from clipboard
+    let reqCaption = null;
+    let captionId = null;
+    let reqId = 0;
+
     const originalText = button.getAttribute('data-clipboard-text');
     if (!originalText) return;
-    let reqCaption = null
     const parts = originalText.split(' - ');
 
     if (parts.length === 2) 
     {
-      const numberPart = parts[1].split( "?" )[0].trim();
+      reqId = parts[1].split( "?" )[0].trim();
 
-      if (/^\d+$/.test(numberPart)) {
-        const captionId = 'WikiPageCaption' + numberPart
+      if (/^\d+$/.test(reqId)) 
+      {
+        captionId = 'WikiPageCaption' + reqId
         console.log('The DEVPROM requirement id: ', captionId);
         captionElement = document.getElementById(captionId)
 
@@ -31,12 +35,12 @@ document.addEventListener(
         } 
         else 
         {
-          reqCaption = getTitle( numberPart );
+          reqCaption = getTitle( reqId );
 
           if ( reqCaption.length == 0 )
           {
              // One more chance to find a fucking DEVPROM requirement title
-             const elements = document.querySelectorAll(`[objectid="${numberPart}"]`);
+             const elements = document.querySelectorAll(`[objectid="${reqId}"]`);
              const firstWithTitle = Array.from(elements).find(el => el.hasAttribute('title'));
     
              if (firstWithTitle) 
@@ -45,7 +49,7 @@ document.addEventListener(
              } 
              else 
              {
-               console.log('The DEVPROM requirement is not found: ', numberPart);
+               console.log('The DEVPROM requirement is not found: ', reqId);
              }
           }
         }
@@ -59,7 +63,8 @@ document.addEventListener(
 	    reqCaption = getTitle( title );
     }
 
-    pattern = "${url} + ${desc}";
+    // Template is used by default if there is no saved yet
+    pattern = "${url} - ${desc} - [${id}]";
 
     await browser.storage.local.get('savedText').then(function(result) 
     {
@@ -73,15 +78,17 @@ document.addEventListener(
     
     // Final transform
     modifiedText = pattern.replace( "${url}", encodeURI(originalText) );
+    modifiedText = modifiedText.replace( "${id}", reqId );
     modifiedText = modifiedText.replace( "${desc}", reqCaption );
 
-    // consume event
+    // Consume event
     e.preventDefault();
     e.stopImmediatePropagation();
 
     // copy to clipboard
     try {
-      const htmlLink = "<a href=\"" + encodeURI(originalText) + "\">" + reqCaption + "</a>";
+      // The HTML format is hardcoded
+      const htmlLink = "<a href=\"" + encodeURI( originalText ) + "\">" + reqCaption + " - [" + reqId +"]</a>";
       const htmlContent = new Blob([htmlLink], { type: 'text/html' });
       const textContent = new Blob([modifiedText], { type: 'text/plain' });
 		const clipboardItem = new ClipboardItem({

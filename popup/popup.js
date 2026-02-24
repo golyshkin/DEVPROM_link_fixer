@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
   {
      browser.storage.local.set({ option: "rpuml" });
 
-     textInput.value = "[[${url} ${desc}]]";
+     textInput.value = "[[${url} - ${desc} - [${id}]]]";
      const simChangeEvent = new Event('input', { 'bubbles': true });
      
      textInput.dispatchEvent(simChangeEvent);
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
   {
      browser.storage.local.set({ option: "rdefault" });
 
-     textInput.value = "${url} - ${desc}";
+     textInput.value = "${url} - ${desc} - [${id}]";
      const simChangeEvent = new Event('input', { 'bubbles': true });
      
      textInput.dispatchEvent(simChangeEvent);
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
   {
      browser.storage.local.set({ option: "rjira" });
 
-     textInput.value = "[${desc}|${url}]";
+     textInput.value = "[${desc} - [${id}]|${url}]";
      const simChangeEvent = new Event('input', { 'bubbles': true });
 
      textInput.dispatchEvent(simChangeEvent);
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
   {
      browser.storage.local.set({ option: "rmd" });
 
-     textInput.value = "[${url}](${desc})";
+     textInput.value = "[${url}](${desc} - [${id}])";
      const simChangeEvent = new Event('input', { 'bubbles': true });
 
      textInput.dispatchEvent(simChangeEvent);
@@ -92,5 +92,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function checkInput( text )
 {
-	return text.includes( "${url}" ) || text.includes( "${desc}" )
+	return text.includes( "${id}" ) || text.includes( "${url}" ) || text.includes( "${desc}" )
 }
