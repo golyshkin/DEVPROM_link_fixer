@@ -11,10 +11,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const rPumlId = document.getElementById('rpuml');
 
   browser.storage.local.get('savedText').then(function(result) {
-    if (result.savedText) {
+    if (result.savedText) 
+    {
       textInput.value = result.savedText;
       status.textContent = 'Loaded.';
       setTimeout(() => status.textContent = '', 2000);
+    }
+    else
+    {
+	    setDefault();
+	    document.getElementById('rdefault').checked = true;
     }
   });
 
@@ -24,6 +30,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  function setDefault()
+  {
+     browser.storage.local.set({ option: "rdefault" });
+
+     textInput.value = "${url} - ${desc} - [${id}]";
+     const simChangeEvent = new Event('input', { 'bubbles': true });
+     
+     textInput.dispatchEvent(simChangeEvent);
+  }
+  
   rPumlId.addEventListener('click', function() 
   {
      browser.storage.local.set({ option: "rpuml" });
@@ -36,12 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   rDefaultId.addEventListener('click', function() 
   {
-     browser.storage.local.set({ option: "rdefault" });
-
-     textInput.value = "${url} - ${desc} - [${id}]";
-     const simChangeEvent = new Event('input', { 'bubbles': true });
-     
-     textInput.dispatchEvent(simChangeEvent);
+     setDefault();
   });
 
   rJiraId.addEventListener('click', function() 
