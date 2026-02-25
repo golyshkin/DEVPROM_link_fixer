@@ -16,10 +16,10 @@
   "commands": {
     "_execute_action": {
       "suggested_key": {
-        "default": "Alt+Shift+D",
-        "mac": "Control+Shift+D"
+        "default": "Ctrl+Alt+D",
+        "chromeos": "Alt+Shift+D"
       },
-      "description": "Enable/Disable DEVPROM Fixer Plugin."
+      "description": "Show the DEVPROM Fixer Dialog."
     }
   },
   "browser_specific_settings": {
