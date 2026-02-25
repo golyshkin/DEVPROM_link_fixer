@@ -75,7 +75,7 @@ Open the format selector dialog with:
 | Platform | Shortcut |
 |---|---|
 | Windows / Linux | `Alt+Shift+D` |
-| macOS | `Alt+Shift+D` |
+| macOS | `Opt+Shift+D` |
 
 ### Popup Dialog
 
