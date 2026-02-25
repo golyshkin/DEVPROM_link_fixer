@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.close();
   });
 
-  // �������������� ��� ��������� ������ (�����������)
+  // Autosave on input change (debounced)
   let saveTimeout;
   textInput.addEventListener('input', function() 
   {

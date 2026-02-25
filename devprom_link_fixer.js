@@ -104,7 +104,7 @@ document.addEventListener(
     } catch (err) {
       console.error('The DEVPROM requirement copy to clipboard ERROR:', err);
     }
-    // ������� ���� ������ ���� ��� <a>
+    // Close dropdown menu if the clicked element is <a>
     if (button.tagName.toLowerCase() === 'a') {
         const menu = button.closest('div.dropdown-fixed');
         if (menu && menu.classList.contains('open')) {
