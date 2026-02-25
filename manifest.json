@@ -16,8 +16,7 @@
   "commands": {
     "_execute_action": {
       "suggested_key": {
-        "default": "Ctrl+Alt+D",
-        "chromeos": "Alt+Shift+D"
+        "default": "Alt+Shift+D"
       },
       "description": "Show the DEVPROM Fixer Dialog."
     }
