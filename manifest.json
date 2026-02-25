@@ -1,22 +1,23 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "DEVPROM Link Fixer",
   "version": "3.4",
   "description": "DEVPROM link tool fixes the DEVPROM broken links to TXT/HTML user friendly MD, PUML, JIRA & HTML formats for any further usage. Supported a keywords for set the custom URL template.",
   "author": "Alexander.Golyshkin",
   "homepage_url": "https://github.com/golyshkin/DEVPROM_link_fixer",
   "permissions": [
-    "storage"
+    "storage",
+    "clipboardWrite"
   ],
   "options_page": "options/options.html",
   "icons": {
     "48": "icons/icon.png"
   },
   "commands": {
-    "_execute_browser_action": {
+    "_execute_action": {
       "suggested_key": {
-        "default": "Ctrl+Alt+D",
-        "mac": "Command+Alt+D"
+        "default": "Alt+Shift+D",
+        "mac": "Control+Shift+D"
       },
       "description": "Enable/Disable DEVPROM Fixer Plugin."
     }
@@ -24,13 +25,13 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "Alexander.Golyshkin@ya.ru",
-      "strict_min_version": "142.0",
+      "strict_min_version": "109.0",
       "data_collection_permissions": {
             "required": [ "none" ]
           }    
     }
   },
-  "browser_action": {
+  "action": {
     "default_title": "plugin",
     "default_popup": "popup/popup.html",
     "default_icon": {
