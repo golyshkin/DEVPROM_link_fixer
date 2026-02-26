@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "DEVPROM Link Fixer",
-  "version": "3.5",
+  "version": "3.6",
   "description": "DEVPROM link tool fixes the DEVPROM broken links to TXT/HTML user friendly MD, PUML, JIRA & HTML formats for any further usage. Supported a keywords for set the custom URL template.",
   "author": "Alexander.Golyshkin",
   "homepage_url": "https://github.com/golyshkin/DEVPROM_link_fixer",

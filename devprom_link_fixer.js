@@ -18,6 +18,11 @@ document.addEventListener(
 
     const originalText = button.getAttribute('data-clipboard-text');
     if (!originalText) return;
+    
+    const urlParts = originalText.split('/');
+	 const lastUrlPart = urlParts[urlParts.length - 1];
+    const projectId = lastUrlPart.split('.')[0];
+
     const parts = originalText.split(' - ');
 
     if (parts.length === 2) 
@@ -90,8 +95,8 @@ document.addEventListener(
     // copy to clipboard
     try {
       // The HTML format is hardcoded
-      const htmlLink = "<a href=\"" + encodeURI( originalText ) + "\">" + reqCaption + " - [" + reqId +"]</a>";
-      const htmlContent = new Blob([htmlLink], { type: 'text/html' });
+      const htmlLink = "<a class=\"uid with-tooltip\" info=\"/pm/" + projectId + "/tooltip/Requirement/" + reqId + "\" data-placement=\"right\" href=\"" + encodeURI( originalText ) + "\" target=\"_blank\" title=\"\">" + reqCaption + " - [" + reqId +"]</a>";
+      const htmlContent = new Blob([htmlLink], { type: 'text/html; charset=utf-8' });
       const textContent = new Blob([modifiedText], { type: 'text/plain' });
 		const clipboardItem = new ClipboardItem({
 				'text/html': htmlContent,
