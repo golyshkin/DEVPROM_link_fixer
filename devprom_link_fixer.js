@@ -6,10 +6,8 @@ document.addEventListener(
     // get nearest button
     const button = e.target.closest('button.clipboard, a.clipboard');
 
-    if (!button) return;
-
-    // check clipboard
-    if (!button.classList.contains('clipboard')) return;
+	// check data in clipboard and pressed CTRL key to skip URL conversation
+    if ( ( !button && !button.classList.contains('clipboard') ) || e.ctrlKey || e.metaKey ) return;
 
     // get data from clipboard
     let reqCaption = null;
@@ -95,8 +93,10 @@ document.addEventListener(
     // copy to clipboard
     try {
       // The HTML format is hardcoded
-      const htmlLink = "<a class=\"uid with-tooltip\" info=\"/pm/" + projectId + "/tooltip/Requirement/" + reqId + "\" data-placement=\"right\" href=\"" + encodeURI( originalText ) + "\" target=\"_blank\" title=\"\">" + reqCaption + " - [" + reqId +"]</a>";
-      const htmlContent = new Blob([htmlLink], { type: 'text/html; charset=utf-8' });
+      //const htmlLink = "<a class=\"uid with-tooltip\" info=\"/pm/" + projectId + "/tooltip/Requirement/" + reqId + "\" data-placement=\"right\" data-cke-saved-href=\"" + encodeURI( originalText ) + "\" href=\"" + encodeURI( originalText ) + "\" target=\"_blank\" title=\"\">" + reqCaption + " - [" + reqId + "]</a>";
+      const htmlLink = '<a class="uid with-tooltip" info="/pm/IT_IVI/tooltip/Requirement/1181717" data-placement="right" data-cke-saved-href="https://devprom.e-kama.com/pm/IT_IVI/IT_IVI.UI_requirement%20-%201181717" href="https://devprom.e-kama.com/pm/IT_IVI/IT_IVI.UI_requirement%20-%201181717">[IT_IVI.UI_requirement - 1181717] IFT - OTA UI Support_OTA_SettingsList</a>';
+
+      const htmlContent = new Blob([htmlLink], { type: 'text/html' });
       const textContent = new Blob([modifiedText], { type: 'text/plain' });
 		const clipboardItem = new ClipboardItem({
 				'text/html': htmlContent,
