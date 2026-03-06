@@ -6,7 +6,7 @@ document.addEventListener(
     // get nearest button
     const button = e.target.closest('button.clipboard, a.clipboard');
 
-	// check data in clipboard and pressed CTRL key to skip URL conversation
+    // check data in clipboard and pressed CTRL key to skip URL conversation
     if ( ( !button && !button.classList.contains('clipboard') ) || e.ctrlKey || e.metaKey ) return;
 
     // get data from clipboard
@@ -18,12 +18,15 @@ document.addEventListener(
     if (!originalText) return;
     
     const urlParts = originalText.split('/');
-	 const lastUrlPart = urlParts[urlParts.length - 1];
+    const lastUrlPart = urlParts[urlParts.length - 1];
     const projectId = lastUrlPart.split('.')[0];
 
-    const parts = originalText.split(' - ');
+    // This is a magical calculation, because DEVPROM implements different ways to create URLs. It's unbelievable, but a fact!
+    const parts1 = originalText.split('%20-%20');
+    const parts2 = originalText.split('+-+');
+    const parts = parts1.length > parts2.length ? parts1 : parts2;
 
-    if (parts.length === 2) 
+    if ( parts.length === 2 ) 
     {
       reqId = parts[1].split( "?" )[0].trim();
 
@@ -47,7 +50,7 @@ document.addEventListener(
              // One more chance to find a fucking DEVPROM requirement title
              const elements = document.querySelectorAll(`[objectid="${reqId}"]`);
              const firstWithTitle = Array.from(elements).find(el => el.hasAttribute('title'));
-    
+             
              if (firstWithTitle) 
              {
                reqCaption = firstWithTitle.innerText;
@@ -65,7 +68,7 @@ document.addEventListener(
        const parts = originalText.split( "/")
        const title = parts[ parts.length - 1].split("?")[0]
 
-	    reqCaption = getTitle( title );
+       reqCaption = getTitle( title );
     }
 
     // Template is used by default if there is no saved yet
@@ -79,7 +82,7 @@ document.addEventListener(
       }
     });
 
-	 console.log( pattern );
+    console.log( pattern );
     
     // Final transform
     modifiedText = pattern.replace( "${url}", encodeURI(originalText) );
@@ -98,10 +101,10 @@ document.addEventListener(
 
       const htmlContent = new Blob([htmlLink], { type: 'text/html' });
       const textContent = new Blob([modifiedText], { type: 'text/plain' });
-		const clipboardItem = new ClipboardItem({
-				'text/html': htmlContent,
-				'text/plain': textContent
-				});
+      const clipboardItem = new ClipboardItem({
+         'text/html': htmlContent,
+         'text/plain': textContent
+      });
       
       await navigator.clipboard.write([clipboardItem]);      
       
@@ -144,17 +147,17 @@ function getTitle( findStr )
    // Lets search in Requirements Registry
    if ( reqCaption == "" )
    {
-   	const targetRow = document.querySelector( `tr[object-id="${findStr}"]` );
+      const targetRow = document.querySelector( `tr[object-id="${findStr}"]` );
 
-		if ( targetRow ) 
-		{
-			reqCaption = targetRow.querySelector('.fancytree-title');
+      if ( targetRow ) 
+      {
+         reqCaption = targetRow.querySelector('.fancytree-title');
     
-			if ( reqCaption ) 
-			{
-				reqCaption = reqCaption.textContent.trim();
-			} 
-		} 
+         if ( reqCaption ) 
+         {
+            reqCaption = reqCaption.textContent.trim();
+         } 
+      } 
    }
     
    return reqCaption;
