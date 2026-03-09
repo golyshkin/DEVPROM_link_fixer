@@ -1,4 +1,5 @@
 const browser = globalThis.browser || chrome;
+const DEFAULT_TEXT = "The original DEVPROM link format...";
 
 document.addEventListener('DOMContentLoaded', function() {
   const textInput = document.getElementById('textInput');
@@ -6,21 +7,28 @@ document.addEventListener('DOMContentLoaded', function() {
   const status = document.getElementById('status');
   const error = document.getElementById('error');
   const rDefaultId = document.getElementById('rdefault');
+  const rCustomId = document.getElementById('rcustom');
   const rJiraId = document.getElementById('rjira');
   const rMdId = document.getElementById('rmd');
   const rPumlId = document.getElementById('rpuml');
 
   browser.storage.local.get('savedText').then(function(result) {
-    if (result.savedText) 
+    if ( result.savedText ) 
     {
       textInput.value = result.savedText;
       status.textContent = 'Loaded.';
       setTimeout(() => status.textContent = '', 2000);
+
+      // On update need to restore disabled input for DEFAULT selection
+      if ( textInput.value == DEFAULT_TEXT ) 
+      {
+         textInput.disabled = true;
+      }
     }
     else
     {
-	    setDefault();
 	    document.getElementById('rdefault').checked = true;
+	    setDefault();
     }
   });
 
@@ -34,7 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
   {
      browser.storage.local.set({ option: "rdefault" });
 
-     textInput.value = "${url} - ${desc} - [${id}]";
+     textInput.disabled = true;
+     textInput.value = DEFAULT_TEXT;
      const simChangeEvent = new Event('input', { 'bubbles': true });
      
      textInput.dispatchEvent(simChangeEvent);
@@ -45,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
      browser.storage.local.set({ option: "rpuml" });
 
      textInput.value = "[[${url} - ${desc} - [${id}]]]";
+     textInput.disabled = false;
      const simChangeEvent = new Event('input', { 'bubbles': true });
      
      textInput.dispatchEvent(simChangeEvent);
@@ -55,11 +65,23 @@ document.addEventListener('DOMContentLoaded', function() {
      setDefault();
   });
 
+  rCustomId.addEventListener('click', function() 
+  {
+     browser.storage.local.set({ option: "rcustom" });
+
+     textInput.value = "${url} - ${desc} - [${id}]";
+     textInput.disabled = false;
+     const simChangeEvent = new Event('input', { 'bubbles': true });
+     
+     textInput.dispatchEvent(simChangeEvent);
+  });
+
   rJiraId.addEventListener('click', function() 
   {
      browser.storage.local.set({ option: "rjira" });
 
      textInput.value = "[${desc} - [${id}]|${url}]";
+     textInput.disabled = false;
      const simChangeEvent = new Event('input', { 'bubbles': true });
 
      textInput.dispatchEvent(simChangeEvent);
@@ -70,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
      browser.storage.local.set({ option: "rmd" });
 
      textInput.value = "[${url}](${desc} - [${id}])";
+     textInput.disabled = false;
      const simChangeEvent = new Event('input', { 'bubbles': true });
 
      textInput.dispatchEvent(simChangeEvent);
@@ -105,5 +128,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function checkInput( text )
 {
-	return text.includes( "${id}" ) || text.includes( "${url}" ) || text.includes( "${desc}" )
+	return text.includes( "${id}" ) || text.includes( "${url}" ) || text.includes( "${desc}" ) || text.includes( DEFAULT_TEXT )
 }

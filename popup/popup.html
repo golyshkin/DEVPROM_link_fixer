@@ -52,21 +52,25 @@
 <body>
   <div class="container">
     <strong>URL Format Template:</strong>
-    <textarea name="ta" autofocus id="textInput" placeholder="${url} - ${desc} - [${id}]"></textarea>
+    <textarea name="ta" autofocus id="textInput" placeholder=""></textarea>
     <table>
     	<tr>
     		<td>
-				<input type="radio" id="rdefault" name="option" value="Default" />
+				<input type="radio" id="rdefault" name="option" value="Default"/>
 				<label for="default">Default</label>
-       </td>
+         </td>
+    		<td>
+				<input type="radio" id="rcustom" name="option" value="Custom" />
+				<label for="custom">Custom</label>
+         </td>
     		<td>
 				<input type="radio" id="rjira" name="option" value="Jira" />
 				<label for="jira">Jira</label>
-        </td>
+         </td>
     		<td>
 				<input type="radio" id="rmd" name="option" value="MD" />
 				<label for="md">MD</label>
-        </td>
+         </td>
     		<td>
 				<input type="radio" id="rpuml" name="option" value="PUML" />
 				<label for="md">PUML</label>

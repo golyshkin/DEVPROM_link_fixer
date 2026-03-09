@@ -1,4 +1,5 @@
 const browser = globalThis.browser || chrome;
+const DEFAULT_TEXT = "The original DEVPROM link format...";
 
 document.addEventListener(
   'click',
@@ -15,6 +16,7 @@ document.addEventListener(
     let reqId = 0;
 
     const originalText = button.getAttribute('data-clipboard-text');
+
     if (!originalText) return;
     
     const urlParts = originalText.split('/');
@@ -76,18 +78,29 @@ document.addEventListener(
 
     await browser.storage.local.get('savedText').then(function(result) 
     {
-      if (result.savedText) 
-      {
-        pattern = result.savedText;
-      }
+       pattern = result.savedText == DEFAULT_TEXT ? null : result.savedText;
     });
 
-    console.log( pattern );
+    let modifiedText = null;
+    let htmlLink = null;
+
+    if ( pattern != null )
+    {
+       console.log( pattern );
     
-    // Final transform
-    modifiedText = pattern.replace( "${url}", encodeURI(originalText) );
-    modifiedText = modifiedText.replace( "${id}", reqId );
-    modifiedText = modifiedText.replace( "${desc}", reqCaption );
+       // Final transform
+       modifiedText = pattern.replace( "${url}", encodeURI(originalText) );
+       modifiedText = modifiedText.replace( "${id}", reqId );
+       modifiedText = modifiedText.replace( "${desc}", reqCaption );
+       // The HTML format is hardcoded
+       htmlLink = "<a class=\"uid with-tooltip\" info=\"/pm/" + projectId + "/tooltip/Requirement/" + reqId + "\" data-placement=\"right\" data-cke-saved-href=\"" + encodeURI( originalText ) + "\" href=\"" + encodeURI( originalText ) + "\" target=\"_blank\" title=\"\">" + reqCaption + " - [" + reqId + "]</a>";
+
+    }
+    else
+    {
+    	// Default URL formatter is selected
+		htmlLink = modifiedText = originalText;
+    }
 
     // Consume event
     e.preventDefault();
@@ -95,10 +108,6 @@ document.addEventListener(
 
     // copy to clipboard
     try {
-      // The HTML format is hardcoded
-      const htmlLink = "<a class=\"uid with-tooltip\" info=\"/pm/" + projectId + "/tooltip/Requirement/" + reqId + "\" data-placement=\"right\" data-cke-saved-href=\"" + encodeURI( originalText ) + "\" href=\"" + encodeURI( originalText ) + "\" target=\"_blank\" title=\"\">" + reqCaption + " - [" + reqId + "]</a>";
-      //const htmlLink = '<a class="uid with-tooltip" info="/pm/IT_IVI/tooltip/Requirement/1181717" data-placement="right" data-cke-saved-href="https://devprom.e-kama.com/pm/IT_IVI/IT_IVI.UI_requirement%20-%201181717" href="https://devprom.e-kama.com/pm/IT_IVI/IT_IVI.UI_requirement%20-%201181717">[IT_IVI.UI_requirement - 1181717] IFT - OTA UI Support_OTA_SettingsList</a>';
-
       const htmlContent = new Blob([htmlLink], { type: 'text/html' });
       const textContent = new Blob([modifiedText], { type: 'text/plain' });
       const clipboardItem = new ClipboardItem({
