@@ -162,11 +162,33 @@ function getTitle( findStr )
       {
          reqCaption = targetRow.querySelector('.fancytree-title');
     
-         if ( reqCaption ) 
-         {
-            reqCaption = reqCaption.textContent.trim();
-         } 
+         reqCaption = reqCaption ? reqCaption.textContent.trim() : "";
       } 
+   }
+
+   // Lets search in context pop-up window
+   if ( reqCaption == "" )
+   {
+      const elements = document.querySelectorAll('button.clipboard, .tt-field-data');
+      let foundText = null;
+
+      for (const element of elements) 
+      {
+          const parentDiv = element.closest('.tt-field-data');
+
+          if ( parentDiv && parentDiv.textContent.includes( findStr ) ) 
+          {
+              const fullText = parentDiv.textContent;
+              const parts = fullText.split( '/' );
+
+              if ( parts.length > 1 )
+              {
+                 reqCaption = parts[ parts.length - 1 ].trim();
+              }
+
+              break;
+          }
+      }   
    }
     
    return reqCaption;
