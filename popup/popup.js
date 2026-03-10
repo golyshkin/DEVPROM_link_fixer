@@ -13,28 +13,31 @@ document.addEventListener('DOMContentLoaded', function() {
   const rPumlId = document.getElementById('rpuml');
 
   browser.storage.local.get('savedText').then(function(result) {
+
+    textInput.disabled = true;
+
     if ( result.savedText ) 
     {
       textInput.value = result.savedText;
       status.textContent = 'Loaded.';
       setTimeout(() => status.textContent = '', 2000);
-
-      // On update need to restore disabled input for DEFAULT selection
-      if ( textInput.value == DEFAULT_TEXT ) 
-      {
-         textInput.disabled = true;
-      }
     }
     else
     {
-	    document.getElementById('rdefault').checked = true;
+	    rDefaultId.checked = true;
 	    setDefault();
     }
   });
 
   browser.storage.local.get('option').then(function(result) {
-    if (result.option) {
+    if (result.option) 
+    {
       document.getElementById( result.option ).checked = true;
+
+      if ( rCustomId.checked ) 
+      {
+         textInput.disabled = false;
+      }
     }
   });
 
@@ -42,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
   {
      browser.storage.local.set({ option: "rdefault" });
 
-     textInput.disabled = true;
      textInput.value = DEFAULT_TEXT;
+     textInput.disabled = true;
      const simChangeEvent = new Event('input', { 'bubbles': true });
      
      textInput.dispatchEvent(simChangeEvent);
@@ -54,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
      browser.storage.local.set({ option: "rpuml" });
 
      textInput.value = "[[${url} - ${desc} - [${id}]]]";
-     textInput.disabled = false;
+     textInput.disabled = true;
      const simChangeEvent = new Event('input', { 'bubbles': true });
      
      textInput.dispatchEvent(simChangeEvent);
@@ -81,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
      browser.storage.local.set({ option: "rjira" });
 
      textInput.value = "[${desc} - [${id}]|${url}]";
-     textInput.disabled = false;
+     textInput.disabled = true;
      const simChangeEvent = new Event('input', { 'bubbles': true });
 
      textInput.dispatchEvent(simChangeEvent);
@@ -92,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
      browser.storage.local.set({ option: "rmd" });
 
      textInput.value = "[${url}](${desc} - [${id}])";
-     textInput.disabled = false;
+     textInput.disabled = true;
      const simChangeEvent = new Event('input', { 'bubbles': true });
 
      textInput.dispatchEvent(simChangeEvent);
