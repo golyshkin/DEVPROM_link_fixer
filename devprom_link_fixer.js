@@ -191,5 +191,5 @@ function getTitle( findStr )
       }   
    }
     
-   return reqCaption;
+   return reqCaption.replace( /\r?\n|\r|\t/g, ' ' ).replace( /\s{2,}/g, ' ' );
 }
