@@ -4,8 +4,15 @@ A browser extension for Firefox and Chromium that intercepts clipboard copy acti
 
 **Version:** 3.5 | **Author:** Alexander Golyshkin
 
+
+[TOC]
+
 ---
 
+## Overview
+DEVPROM Link Fixer is JS/HTML plugin for Firefox/Chromium which provides an ability to format default DEVPROM links to different formats as showed on picture below:
+
+![Application Pop-up](./icons/app.png)
 ## The Problem
 
 When copying a DEVPROM requirement link, the raw clipboard content looks like this:
