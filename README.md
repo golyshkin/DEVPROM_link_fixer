@@ -5,8 +5,26 @@ A browser extension for Firefox and Chromium that intercepts clipboard copy acti
 **Version:** 3.5 | **Author:** Alexander Golyshkin
 
 
-[TOC]
+<!-- START doctoc -->
+## Contents
 
+- [DEVPROM Link Fixer](#devprom-link-fixer)
+ - [Overview](#overview)
+ - [The Problem](#the-problem)
+ - [What It Does](#what-it-does)
+ - [Features](#features)
+ - [Installation](#installation)
+  - [Firefox](#firefox)
+  - [Chrome and Edge Support](#chrome-and-edge-support)
+ - [Usage](#usage)
+  - [Keyboard Shortcut](#keyboard-shortcut)
+  - [Popup Dialog](#popup-dialog)
+  - [Copying a Link](#copying-a-link)
+ - [Template Reference](#template-reference)
+  - [Built-in Templates](#built-in-templates)
+ - [Permissions](#permissions)
+ - [References](#references)
+<!-- END doctoc -->
 ---
 
 ## Overview
@@ -67,7 +85,7 @@ Both `text/plain` and `text/html` versions are written to the clipboard simultan
 1. Go to `about:debugging` → **This Firefox** → **Load Temporary Add-on**
 2. Select the `manifest.json` file from this repository
 
-### Chromium / Chrome / Edge
+### Chrome and Edge Support
 1. Go to `chrome://extensions` → enable **Developer mode**
 2. Click **Load unpacked** and select the repository folder
 
