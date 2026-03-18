@@ -1,6 +1,0 @@
-@startuml
-mainframe Test
-
-A -> B: Test
-
-@enduml
