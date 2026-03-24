@@ -1,0 +1,9 @@
+@startuml
+
+participant IFT [
+=IVI_IFT
+----
+""Infortainment""
+]
+
+@enduml

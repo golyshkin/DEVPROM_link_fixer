@@ -1,0 +1,10 @@
+@startuml
+
+'Configuration'
+skinparam Shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+
+top to bottom direction
+
+@enduml

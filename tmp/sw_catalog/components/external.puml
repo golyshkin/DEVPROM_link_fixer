@@ -1,0 +1,9 @@
+@startuml
+
+participant SGW [
+=SGW
+----
+""Secure Gateway""
+]
+
+@enduml

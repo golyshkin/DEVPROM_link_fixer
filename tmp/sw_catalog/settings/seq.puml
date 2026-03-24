@@ -1,0 +1,10 @@
+@startuml
+
+'Configuration'
+autonumber 1.1 " #.#"
+skinparam SequenceMessagePadding 2
+skinparam roundcorner 10
+hide unlinked
+!pragma teoz false
+
+@enduml

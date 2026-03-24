@@ -1,0 +1,6 @@
+@startuml
+
+actor User as U
+actor System as S
+
+@enduml

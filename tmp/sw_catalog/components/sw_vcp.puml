@@ -1,0 +1,9 @@
+@startuml
+
+participant VCP [
+=IVI_VCP
+----
+""MCU ASIL-B""
+]
+
+@enduml

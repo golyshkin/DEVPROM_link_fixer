@@ -1,0 +1,9 @@
+@startuml
+
+participant SFI [
+=IVI_SFI
+----
+""Safety Island ASIL-B""
+]
+
+@enduml
