@@ -7,14 +7,14 @@ hide unlinked
 ' PUML Framework defined variables 
 
 ' Current author email
-!$AUTHOR = "unknown@atom.ru"
+'!$AUTHOR = "unknown@atom.ru"
 
 ' Frame variables
 ' FEATURE_NAME - The feature name identifier (etc. OTA, VIG, VAB, etc)
 ' DIAGRAM_TYPE - [SEQ, SM, UC]
-!$DIAGRAM_ID  = "IVI-<FEATURE_NAME>-<DIAGRAM_TYPE>"
-!$DIAGRAM_VER = "v.1"
-!$DIAGRAM_TITLE = "Diagram Title."
+'!$DIAGRAM_ID  = "IVI-<FEATURE_NAME>-<DIAGRAM_TYPE>"
+'!$DIAGRAM_VER = "v.1"
+'!$DIAGRAM_TITLE = "Diagram Title."
 
 mainframe $DIAGRAM_ID - $DIAGRAM_VER: $DIAGRAM_TITLE\t
 right header Author: $AUTHOR
