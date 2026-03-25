@@ -26,4 +26,20 @@ right header Author: $AUTHOR
   end note
 !endif
 
+!function $addActor($list, $type, $name, $desc)
+    !if $type == "actor"
+        actor $name
+    !elseif $type == "database"
+        database $name
+    !else
+        participant $name [
+        =$name
+        ----
+        ""$desc""
+        ]
+    !endif
+    
+    !return $list + "# " + "**" + $name + "** - " + $desc + "\n"
+!endfunction
+
 @enduml

@@ -2,26 +2,7 @@
 
 !global $swSfiActorList = ""
 
-!procedure $addSwSfiActor( $type, $name, $desc )
-    ' Declare the participant
-    !if $type == "actor"
-        actor $name
-    !elseif $type == "database"
-        database $name
-    !else
-        participant $name [
-        =$name
-        ----
-        ""$desc""
-        ]
-
-    !endif
-    
-    ' Add its name to a global list string
-    !global $swSfiActorList = $swSfiActorList + "# " + "**" + $name + "** - " + $desc +"\n"
-!endprocedure
-
-$addSwSfiActor( "participant", "IVI_SFI", "Safety Island ASIL-B" )
+!$swSfiActorList = $addSwSfiActor( $swSfiActorList, "participant", "IVI_SFI", "Safety Island ASIL-B" )
 
 !if ( $HELP == true )
   note across : **Defined SW SFI Actors**:\n\t\n$swSfiActorList

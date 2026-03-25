@@ -2,27 +2,9 @@
 
 !global $swIftActorList = ""
 
-!procedure $addSwIftActor( $type, $name, $desc )
-    ' Declare the participant
-    !if $type == "actor"
-        actor $name
-    !elseif $type == "database"
-        database $name
-    !else
-        participant $name [
-        =$name
-        ----
-        ""$desc""
-        ]
+!$swIftActorList = $addSwIftActor( $swIftActorList, "participant", "IVI_IFT", "Infotainment" )
+!$swIftActorList = $addSwIftActor( $swIftActorList, "participant", "IVI_OTA", "OTA Application" )
 
-    !endif
-    
-    ' Add its name to a global list string
-    !global $swIftActorList = $swIftActorList + "# " + "**" + $name + "** - " + $desc +"\n"
-!endprocedure
-
-$addSwIftActor( "participant", "IVI_IFT", "Infotainment" )
-$addSwIftActor( "participant", "IVI_OTA", "OTA Application" )
 
 !if ($HELP == true )
 	note across: **Defined SW IFT Actors**:\n\t\n$swIftActorList
