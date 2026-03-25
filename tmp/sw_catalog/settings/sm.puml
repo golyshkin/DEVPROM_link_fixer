@@ -1,7 +1,5 @@
 @startuml
 
-!include $URL_BASE/sw_catalog/settings/common.puml
-
 'Configuration'
 skinparam Shadowing false
 skinparam roundcorner 10
