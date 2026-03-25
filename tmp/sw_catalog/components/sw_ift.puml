@@ -2,12 +2,16 @@
 
 !global $swIftActorList = ""
 
+' Start IVI SW Compoenets Definition
+
 !$swIftActorList = $addActor( $swIftActorList, "participant", "IVI_IFT", "Infotainment" )
 !$swIftActorList = $addActor( $swIftActorList, "participant", "IVI_OTA", "OTA Application" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IVI_ACM", "Account Manager" )
 
+' End IVI SW Compoenets Definition
 
 !if ($HELP == true )
-	note across: **Defined SW IFT Actors**:\n\t\n$swIftActorList
+	note across #lightblue: **Defined SW IFT Actors**:\n\t\n$swIftActorList
 !endif
 
 @enduml
