@@ -27,7 +27,7 @@ right header Author: $AUTHOR
   end note
 !endif
 
-!procedure $defineActor( $type, $name, $desc, $stereotype = "" )
+!procedure $defineActor( $type, $name, $desc, $stereotype )
     !if $type == "actor"
         actor $name
     !elseif $type == "database"

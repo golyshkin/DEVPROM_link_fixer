@@ -4,8 +4,8 @@
 
 ' Start Generic Compoenets Definition
 
-!$genericActorList = $addActor( $genericActorList, "actor", "User", "User Actor" )
-!$genericActorList = $addActor( $genericActorList, "actor", "System", "System Actor" )
+!$genericActorList = $addActor( $genericActorList, "actor", "User", "User Actor", "" )
+!$genericActorList = $addActor( $genericActorList, "actor", "System", "System Actor", "" )
 
 ' End Generic Compoenets Definition
 
