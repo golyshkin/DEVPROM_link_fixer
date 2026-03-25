@@ -4,9 +4,10 @@
 
 ' Start IVI SW Compoenets Definition
 
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IVI_IFT", "Infotainment" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IVI_OTA", "OTA Application" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IVI_ACM", "Account Manager" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IVI_IFT", "Infotainment", "system" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_OTA", "OTA Application", "app" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_AM", "Account Manager", "service" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_OBC", "On Board Computer", "app" )
 
 ' End IVI SW Compoenets Definition
 

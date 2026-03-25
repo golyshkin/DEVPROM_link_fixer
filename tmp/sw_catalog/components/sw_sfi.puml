@@ -2,7 +2,7 @@
 
 !global $swSfiActorList = ""
 
-!$swSfiActorList = $addActor( $swSfiActorList, "participant", "IVI_SFI", "Safety Island ASIL-B" )
+!$swSfiActorList = $addActor( $swSfiActorList, "participant", "IVI_SFI", "Safety Island ASIL-B", "system" )
 
 !if ( $HELP == true )
   note across #lightgrey: **Defined SW SFI Actors**:\n\t\n**Note:** $COMP_NOTE\n\t\n$swSfiActorList
