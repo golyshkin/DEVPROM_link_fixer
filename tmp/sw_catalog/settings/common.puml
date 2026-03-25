@@ -41,8 +41,8 @@ right header Author: $AUTHOR
     !endif
 !endprocedure
 
-!function $addActor($list, $type, $name, $desc)
-   $defineActor( $type, $name, $desc )   	    
+!function $addActor($list, $type, $name, $desc, $stereotype)
+   $defineActor( $type, $name, $desc, $stereotype )   	    
    !return $list + "# " + "**" + $name + "** - " + $desc + "\n"
 !endfunction
 
