@@ -1,7 +1,5 @@
 @startuml
 
-@startuml
-
 !global $participantSwSfiListStr = ""
 
 !procedure $addSwSfiParticipant( $type, $name, $desc )
