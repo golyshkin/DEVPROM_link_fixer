@@ -6,8 +6,16 @@
 
 !$swIftActorList = $addActor( $swIftActorList, "participant", "IVI_IFT", "Infotainment", "system" )
 !$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_OTA", "OTA Application", "app" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_AM", "Account Manager", "service" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_AM",  "Account Manager", "service" )
 !$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_OBC", "On Board Computer", "app" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_NTF", "Notification Center", "app" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_PM",  "Power Manager", "service" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_AUM", "Audio Manager", "service" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_AUS", "Audio Settings", "app" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_KBD", "Keyboard", "app" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_FAV", "Favorites", "app" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_FM",  "FM Radio", "app" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_PHN", "Phonebook", "app" )
 
 ' End IVI SW Compoenets Definition
 
