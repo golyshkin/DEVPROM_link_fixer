@@ -21,7 +21,7 @@
     !global $participantSwSfiListStr = $participantSwSfiListStr + "# " + "**" + $name + "** - " + $desc +"\n"
 !endprocedure
 
-$addSwIftParticipant( "participant", "IVI_SFI", "Safety Island ASIL-B" )
+$addSwSfiParticipant( "participant", "IVI_SFI", "Safety Island ASIL-B" )
 
 !if ($HELP == true )
   note across : **Declared SW SFI Actors**:\n\$participantSwSfiListStr
