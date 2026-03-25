@@ -11,7 +11,7 @@
 ' End IVI SW Compoenets Definition
 
 !if ($HELP == true )
-	note across #lightblue: **Defined SW IFT Actors**:\n\t\n$swIftActorList
+	note across #lightblue: **Defined SW IFT Actors**:\n\t\n**Note:**$COMP_NOTE\n\t\n$swIftActorList
 !endif
 
 @enduml

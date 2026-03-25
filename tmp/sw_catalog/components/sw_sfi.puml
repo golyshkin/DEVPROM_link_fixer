@@ -5,7 +5,7 @@
 !$swSfiActorList = $addActor( $swSfiActorList, "participant", "IVI_SFI", "Safety Island ASIL-B" )
 
 !if ( $HELP == true )
-  note across #lightgrey: **Defined SW SFI Actors**:\n\t\n$swSfiActorList
+  note across #lightgrey: **Defined SW SFI Actors**:\n\t\n**Note:**$COMP_NOTE\n\t\n$swSfiActorList
 !endif
 
 @enduml
