@@ -33,8 +33,12 @@ right header Author: $AUTHOR
     !elseif $type == "database"
         database $name
     !else
-        participant $name_A [
-        =$name_A
+        legend right
+        $name defined
+        end legend
+
+        participant $name [
+        =$name
         ----
         ""$desc""
         ]
