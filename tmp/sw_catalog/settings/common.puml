@@ -43,7 +43,11 @@ right header Author: $AUTHOR
 
 !function $addActor($list, $type, $name, $desc, $stereotype)
    $defineActor( $type, $name, $desc, $stereotype )
-   !$stereotype ?= "none"
+
+   !if ($stereotype == "")
+      !$stereotype = "none"
+   !endif
+
    !return $list + "# " + "**" + $name + "** <<" + $stereotype + ">> - " + $desc + "\n"
 !endfunction
 
