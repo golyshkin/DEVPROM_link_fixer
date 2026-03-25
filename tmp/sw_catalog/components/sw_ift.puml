@@ -2,8 +2,8 @@
 
 !global $swIftActorList = ""
 
-!$swIftActorList = $addSwIftActor( $swIftActorList, "participant", "IVI_IFT", "Infotainment" )
-!$swIftActorList = $addSwIftActor( $swIftActorList, "participant", "IVI_OTA", "OTA Application" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IVI_IFT", "Infotainment" )
+!$swIftActorList = $addActor( $swIftActorList, "participant", "IVI_OTA", "OTA Application" )
 
 
 !if ($HELP == true )
