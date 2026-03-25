@@ -24,7 +24,7 @@
 $addSwSfiActor( "participant", "IVI_SFI", "Safety Island ASIL-B" )
 
 !if ( $HELP == true )
-  note across : **Declared SW SFI Actors**:\n\n$swSfiActorList
+  note across : **Defined SW SFI Actors**:\n\t\n$swSfiActorList
 !endif
 
 @enduml
