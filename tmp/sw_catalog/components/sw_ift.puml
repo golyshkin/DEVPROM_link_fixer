@@ -1,9 +1,6 @@
 @startuml
 
-participant IFT [
-=IVI_IFT
-----
-""Infotainment""
-]
+$addParticipant( "participant", "IVI_IFT", "Infotainment" )
+$addParticipant( "participant", "IVI_OTA", "OTA Application" )
 
 @enduml

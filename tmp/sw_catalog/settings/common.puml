@@ -7,6 +7,7 @@ hide unlinked
 
 ' PUML Framework defined variables 
 !$URL_BASE = "https://raw.githubusercontent.com/golyshkin/DEVPROM_link_fixer/refs/heads/main/tmp"
+!global $participantListStr = ""
 
 mainframe $DIAGRAM_ID - $DIAGRAM_VER: $DIAGRAM_TITLE\t
 right header Author: $AUTHOR
@@ -24,6 +25,26 @@ right header Author: $AUTHOR
     # **DIAGRAM_VER** = [str] - The Diagram Version (e.g. v.1)
     # **DIAGRAM_TITLE** = [str] - The Diagram Title (e.g. OTA Initialization)
   end note
+  note across : **Declared Participants**:\n\n$participantListStr
 !endif
+
+!procedure $addParticipant( $type, $name, $desc )
+    ' Declare the participant
+    !if $type == "actor"
+        actor $name
+    !elseif $type == "database"
+        database $name
+    !else
+        participant $name [
+        =$name
+        ----
+        ""$desc""
+        ]
+
+    !endif
+    
+    ' Add its name to a global list string
+    !global $participantListStr = $participantListStr + "# " + "**" + $name + "** - " + $desc +"\n"
+!endprocedure
 
 @enduml
