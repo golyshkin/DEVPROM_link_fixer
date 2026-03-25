@@ -27,24 +27,23 @@ right header Author: $AUTHOR
   end note
 !endif
 
-!function $addActor($list, $type, $name, $desc)
+!procedure $defineActor($type, $name, $desc)
     !if $type == "actor"
         actor $name
     !elseif $type == "database"
         database $name
     !else
-        legend right
-        $name defined
-        end legend
-
         participant $name [
         =$name
         ----
         ""$desc""
         ]
     !endif
-    
-    !return $list + "# " + "**" + $name + "** - " + $desc + "\n"
+!endprocedure
+
+!function $addActor($list, $type, $name, $desc)
+   $defineActor( $type, $name, $desc )   	    
+   !return $list + "# " + "**" + $name + "** - " + $desc + "\n"
 !endfunction
 
 @enduml
