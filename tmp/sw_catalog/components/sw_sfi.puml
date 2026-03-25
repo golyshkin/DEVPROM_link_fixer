@@ -1,8 +1,8 @@
 @startuml
 
-!global $participantSwSfiListStr = ""
+!global $swSfiActorList = ""
 
-!procedure $addSwSfiParticipant( $type, $name, $desc )
+!procedure $addSwSfiActor( $type, $name, $desc )
     ' Declare the participant
     !if $type == "actor"
         actor $name
@@ -18,13 +18,13 @@
     !endif
     
     ' Add its name to a global list string
-    !global $participantSwSfiListStr = $participantSwSfiListStr + "# " + "**" + $name + "** - " + $desc +"\n"
+    !global $swSfiListActor = $swSfiActorList + "# " + "**" + $name + "** - " + $desc +"\n"
 !endprocedure
 
-$addSwSfiParticipant( "participant", "IVI_SFI", "Safety Island ASIL-B" )
+$addSwSfiActor( "participant", "IVI_SFI", "Safety Island ASIL-B" )
 
-!if ($HELP == true )
-  note across : **Declared SW SFI Actors**:\n\$participantSwSfiListStr
+!if ( $HELP == true )
+  note across : **Declared SW SFI Actors**:\n$swSfiActorList
 !endif
 
 @enduml

@@ -1,8 +1,8 @@
 @startuml
 
-!global $participantSwIftListStr = ""
+!global $swIftActorList = ""
 
-!procedure $addSwIftParticipant( $type, $name, $desc )
+!procedure $addSwIftActor( $type, $name, $desc )
     ' Declare the participant
     !if $type == "actor"
         actor $name
@@ -18,14 +18,14 @@
     !endif
     
     ' Add its name to a global list string
-    !global $participantSwIftListStr = $participantSwIftListStr + "# " + "**" + $name + "** - " + $desc +"\n"
+    !global $swIftActorList = $swIftActorList + "# " + "**" + $name + "** - " + $desc +"\n"
 !endprocedure
 
-$addSwIftParticipant( "participant", "IVI_IFT", "Infotainment" )
-$addSwIftParticipant( "participant", "IVI_OTA", "OTA Application" )
+$addSwIftActor( "participant", "IVI_IFT", "Infotainment" )
+$addSwIftActor( "participant", "IVI_OTA", "OTA Application" )
 
 !if ($HELP == true )
-  note across : **Declared SW IFT Actors**:\n\$participantSwIftListStr
+  note across : **Declared SW IFT Actors**:\n$swIftActorList
 !endif
 
 @enduml
