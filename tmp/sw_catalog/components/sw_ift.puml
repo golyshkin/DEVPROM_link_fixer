@@ -25,7 +25,7 @@ $addSwIftActor( "participant", "IVI_IFT", "Infotainment" )
 $addSwIftActor( "participant", "IVI_OTA", "OTA Application" )
 
 !if ($HELP == true )
-  note across : **Declared SW IFT Actors**:\n$swIftActorList
+  note across : **Declared SW IFT Actors**:\n\n$swIftActorList
 !endif
 
 @enduml
