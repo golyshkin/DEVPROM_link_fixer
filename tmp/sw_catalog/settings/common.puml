@@ -1,22 +1,29 @@
 @startuml
+
 ' Diagram common configuration
 skinparam mainframeBorderColor #lightgrey
 hide unlinked
 !pragma teoz false
 
 ' PUML Framework defined variables 
-
-' Current author email
-'!$AUTHOR = "unknown@atom.ru"
-
-' Frame variables
-' FEATURE_NAME - The feature name identifier (etc. OTA, VIG, VAB, etc)
-' DIAGRAM_TYPE - [SEQ, SM, UC]
-'!$DIAGRAM_ID  = "IVI-<FEATURE_NAME>-<DIAGRAM_TYPE>"
-'!$DIAGRAM_VER = "v.1"
-'!$DIAGRAM_TITLE = "Diagram Title."
+!$URL_BASE = "https://raw.githubusercontent.com/golyshkin/DEVPROM_link_fixer/refs/heads/main/tmp"
 
 mainframe $DIAGRAM_ID - $DIAGRAM_VER: $DIAGRAM_TITLE\t
 right header Author: $AUTHOR
+
+!if ($HELP == true )
+  note across
+    **HELP Menu:**
+    \t
+    Used Variables:
+    \t
+    # **HELP** = [true, false] - Show this Help
+    # **URL_BASE** = [$URL_BASE] - The base PUML scripts location. Used for simplify '!include' definitions in framework & diagrams.
+    # **AUTHOR** = [str] - The Diagram Author email (eg. Aleksandr.Golyshkin@atom.ru)
+    # **DIAGRAM_ID** = [str] - The Diagram Id which contains from pattern **DOMAIN-FEATURE-DIAGRAM_TYPE** (e.g. IVI-OTA-SEQ, IVI-OTA-UC, IVI-OTA-SM).
+    # **DIAGRAM_VER** = [str] - The Diagram Version (eg. v.1)
+    # **DIAGRAM_TITLE** = [str] - The Diagram Title (eg. OTA Initialization)
+  end note
+!endif
 
 @enduml
