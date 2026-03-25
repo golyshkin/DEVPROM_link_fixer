@@ -19,7 +19,7 @@ right header Author: $AUTHOR
     \t
     # **HELP** = [true, false] - Show this Help
     # **URL_BASE** = [$URL_BASE] - The base PUML scripts location. Used for simplify '!include' definitions in framework & diagrams.
-    # **AUTHOR** = [str] - The Diagram Author email (eg. Aleksandr.Golyshkin@atom.ru)
+    # **AUTHOR** = [str] - The Diagram Author email (e.g. Aleksandr.Golyshkin@atom.ru)
     # **DIAGRAM_ID** = [str] - The Diagram Id which contains from pattern **DOMAIN-FEATURE-DIAGRAM_TYPE** (e.g. IVI-OTA-SEQ, IVI-OTA-UC, IVI-OTA-SM).
     # **DIAGRAM_VER** = [str] - The Diagram Version (e.g. v.1)
     # **DIAGRAM_TITLE** = [str] - The Diagram Title (e.g. OTA Initialization)
