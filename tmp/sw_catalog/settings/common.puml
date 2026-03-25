@@ -12,22 +12,6 @@ hide unlinked
 mainframe $DIAGRAM_ID - $DIAGRAM_VER: $DIAGRAM_TITLE\t
 right header Author: $AUTHOR
 
-!if ($HELP == true )
-  note across
-    **HELP Menu:**
-    \t
-    Used Variables:
-    \t
-    # **HELP** = [true, false] - Show this Help
-    # **URL_BASE** = [$URL_BASE] - The base PUML scripts location. Used for simplify '!include' definitions in framework & diagrams.
-    # **AUTHOR** = [str] - The Diagram Author email (e.g. Aleksandr.Golyshkin@atom.ru)
-    # **DIAGRAM_ID** = [str] - The Diagram Id which contains from pattern **DOMAIN-FEATURE-DIAGRAM_TYPE** (e.g. IVI-OTA-SEQ, IVI-OTA-UC, IVI-OTA-SM).
-    # **DIAGRAM_VER** = [str] - The Diagram Version (e.g. v.1)
-    # **DIAGRAM_TITLE** = [str] - The Diagram Title (e.g. OTA Initialization)
-  end note
-  note across : **Declared Participants**:\n\n$participantListStr
-!endif
-
 !procedure $addParticipant( $type, $name, $desc )
     ' Declare the participant
     !if $type == "actor"
@@ -46,5 +30,21 @@ right header Author: $AUTHOR
     ' Add its name to a global list string
     !global $participantListStr = $participantListStr + "# " + "**" + $name + "** - " + $desc +"\n"
 !endprocedure
+
+!if ($HELP == true )
+  note across
+    **HELP Menu:**
+    \t
+    Used Variables:
+    \t
+    # **HELP** = [true, false] - Show this Help
+    # **URL_BASE** = [$URL_BASE] - The base PUML scripts location. Used for simplify '!include' definitions in framework & diagrams.
+    # **AUTHOR** = [str] - The Diagram Author email (e.g. Aleksandr.Golyshkin@atom.ru)
+    # **DIAGRAM_ID** = [str] - The Diagram Id which contains from pattern **DOMAIN-FEATURE-DIAGRAM_TYPE** (e.g. IVI-OTA-SEQ, IVI-OTA-UC, IVI-OTA-SM).
+    # **DIAGRAM_VER** = [str] - The Diagram Version (e.g. v.1)
+    # **DIAGRAM_TITLE** = [str] - The Diagram Title (e.g. OTA Initialization)
+  end note
+  note across : **Declared Participants**:\n\n$participantListStr
+!endif
 
 @enduml
