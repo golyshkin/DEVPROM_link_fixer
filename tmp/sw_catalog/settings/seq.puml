@@ -1,5 +1,7 @@
 @startuml
 
+!include common.puml
+
 'Configuration'
 autonumber 1.1 " #.#"
 skinparam SequenceMessagePadding 2

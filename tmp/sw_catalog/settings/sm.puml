@@ -1,5 +1,7 @@
 @startuml
 
+!include common.puml
+
 'Configuration'
 skinparam Shadowing false
 skinparam roundcorner 10
