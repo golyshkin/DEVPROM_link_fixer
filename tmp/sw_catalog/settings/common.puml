@@ -51,6 +51,8 @@ right header Author: $AUTHOR
 ' Define actor list holder for each type
 !global $sw_ift_actor_list = ""
 !global $sw_sfi_actor_list = ""
+!global $external_actor_list = ""
+!global $generic_actor_list = ""
 
 !procedure $addActor( $comp_tyte, $actor_type, $actor_name, $actor_desc, $actor_stereotype = "none" )
     $defineActor( $actor_type, $actor_name, $actor_desc, $actor_stereotype)
@@ -67,6 +69,10 @@ right header Author: $AUTHOR
         !$sw_ift_actor_list = $sw_ift_actor_list + $entry
     !elseif ( $comp_tyte == "sw_sfi" )
         !$sw_sfi_actor_list = $sw_sfi_actor_list + $entry
+    !elseif ( $comp_tyte == "exteranl" )
+        !$external_actor_list = $external_actor_list + $entry
+    !elseif ( $comp_tyte == "generic" )
+        !$generic_actor_list = $generic_actor_list + $entry
     !endif
 !endprocedure
 
@@ -75,6 +81,10 @@ right header Author: $AUTHOR
         !return $sw_ift_actor_list
     !elseif ( $comp_tyte == "sw_sfi" )
         !return $sw_sfi_actor_list
+    !elseif ( $comp_tyte == "external" )
+        !return $external_actor_list
+    !elseif ( $comp_tyte == "generic" )
+        !return $generic_actor_list
     !endif
 
     !return ""
