@@ -69,7 +69,7 @@ right header Author: $AUTHOR
         !$sw_ift_actor_list = $sw_ift_actor_list + $entry
     !elseif ( $comp_tyte == "sw_sfi" )
         !$sw_sfi_actor_list = $sw_sfi_actor_list + $entry
-    !elseif ( $comp_tyte == "exteranl" )
+    !elseif ( $comp_tyte == "external" )
         !$external_actor_list = $external_actor_list + $entry
     !elseif ( $comp_tyte == "generic" )
         !$generic_actor_list = $generic_actor_list + $entry
