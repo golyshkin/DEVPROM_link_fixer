@@ -3,9 +3,10 @@
 !include https://raw.githubusercontent.com/golyshkin/DEVPROM_link_fixer/refs/heads/main/tmp/sw_catalog/settings/common.puml
 
 'Configuration'
-skinparam Shadowing false
-skinparam roundcorner 10
 skinparam linetype ortho
+skinparam participantPadding 20
+skinparam roundcorner 10
+skinparam Shadowing false
 
 top to bottom direction
 
