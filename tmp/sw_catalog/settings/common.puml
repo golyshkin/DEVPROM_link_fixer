@@ -48,14 +48,36 @@ right header Author: $AUTHOR
     !endif
 !endprocedure
 
-!function $addActor( $list, $type, $name, $desc, $stereotype = "none" )
-   $defineActor( $type, $name, $desc, $stereotype )
+' Define actor list holder for each type
+!global $sw_ift_actor_list = ""
+!global $sw_sfi_actor_list = ""
 
-   !if ($stereotype == "")
-      !$stereotype = "none"
-   !endif
+!procedure $addActor( $comp_tyte, $actor_type, $actor_name, $actor_desc, $actor_stereotype = "none" )
+    $defineActor( $actor_type, $actor_name, $actor_desc, $actor_stereotype)
+    
+    !if ($actor_stereotype == "")
+        !$actor_stereotype = "none"
+    !endif
+    
+    ' ‘ормируем строку дл€ добавлени€
+    !$entry = "# " + "**" + $actor_name + "** <<" + $actor_stereotype + ">> - " + $actor_desc + "\n"
+    
+    ' ƒобавл€ем в соответствующий список в зависимости от типа
+    !if ( $comp_tyte == "sw_ift" )
+        !$sw_ift_actor_list = $sw_ift_actor_list + $entry
+    !elseif ( $comp_tyte == "sw_sfi" )
+        !$sw_sfi_actor_list = $sw_sfi_actor_list + $entry
+    !endif
+!endprocedure
 
-   !return $list + "# " + "**" + $name + "** <<" + $stereotype + ">> - " + $desc + "\n"
+!function $getActorList( $comp_tyte )
+    !if ( $comp_tyte == "sw_ift" )
+        !return $sw_ift_actor_list
+    !elseif ( $comp_tyte == "sw_sfi" )
+        !return $sw_sfi_actor_list
+    !endif
+
+    !return ""
 !endfunction
 
 @enduml

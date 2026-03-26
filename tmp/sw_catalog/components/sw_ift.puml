@@ -1,26 +1,24 @@
 @startuml
 
-!global $swIftActorList = ""
-
 ' Start IVI SW Compoenets Definition
 
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IVI_IFT", "Infotainment", "system" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_OTA", "OTA Application", "app" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_AM",  "Account Manager", "service" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_OBC", "On Board Computer", "app" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_NTF", "Notification Center", "app" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_PM",  "Power Manager", "service" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_AUM", "Audio Manager", "service" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_AUS", "Audio Settings", "app" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_KBD", "Keyboard", "app" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_FAV", "Favorites", "app" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_FM",  "FM Radio", "app" )
-!$swIftActorList = $addActor( $swIftActorList, "participant", "IFT_PHN", "Phonebook", "app" )
+$addActor( "sw_ift", "participant", "IVI_IFT", "Infotainment", "system" )
+$addActor( "sw_ift", "participant", "IFT_OTA", "OTA Application", "app" )
+$addActor( "sw_ift", "participant", "IFT_AM",  "Account Manager", "service" )
+$addActor( "sw_ift", "participant", "IFT_OBC", "On Board Computer", "app" )
+$addActor( "sw_ift", "participant", "IFT_NTF", "Notification Center", "app" )
+$addActor( "sw_ift", "participant", "IFT_PM",  "Power Manager", "service" )
+$addActor( "sw_ift", "participant", "IFT_AUM", "Audio Manager", "service" )
+$addActor( "sw_ift", "participant", "IFT_AUS", "Audio Settings", "app" )
+$addActor( "sw_ift", "participant", "IFT_KBD", "Keyboard", "app" )
+$addActor( "sw_ift", "participant", "IFT_FAV", "Favorites", "app" )
+$addActor( "sw_ift", "participant", "IFT_FM",  "FM Radio", "app" )
+$addActor( "sw_ift", "participant", "IFT_PHN", "Phonebook", "app" )
 
 ' End IVI SW Compoenets Definition
 
 !if ($HELP == true )
-	note across #lightblue: **Defined SW IFT Actors**:\n\t\n**Note:** $COMP_NOTE\n\t\n$swIftActorList
+	note across #lightblue: **Defined SW IFT Components**:\n\t\n**Note:** $COMP_NOTE\n\t\n$getActorList( "sw_ift" )
 !endif
 
 @enduml

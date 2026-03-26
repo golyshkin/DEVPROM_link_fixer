@@ -1,9 +1,14 @@
 @startuml
 
-participant SGW [
-=SGW
-----
-""Secure Gateway""
-]
+' Start Generic Compoenets Definition
+
+$addActor( "external", "participant", "TBOX", "Telemetric Box" )
+$addActor( "external", "participant", "SGW",  "Secure Gateway" )
+
+' End Generic Compoenets Definition
+
+!if ($HELP == true )
+	note across #lightgreen: **Defined External Components**:\n\t\n**Note:** $COMP_NOTE\n\t\n$getActorList( "external" )
+!endif
 
 @enduml
