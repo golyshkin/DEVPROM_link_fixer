@@ -61,10 +61,8 @@ right header Author: $AUTHOR
         !$actor_stereotype = "none"
     !endif
     
-    ' ‘ормируем строку дл€ добавлени€
     !$entry = "# " + "**" + $actor_name + "** <<" + $actor_stereotype + ">> - " + $actor_desc + "\n"
     
-    ' ƒобавл€ем в соответствующий список в зависимости от типа
     !if ( $comp_tyte == "sw_ift" )
         !$sw_ift_actor_list = $sw_ift_actor_list + $entry
     !elseif ( $comp_tyte == "sw_sfi" )
