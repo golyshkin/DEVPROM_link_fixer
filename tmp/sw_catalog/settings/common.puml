@@ -13,7 +13,7 @@ mainframe $DIAGRAM_ID - $DIAGRAM_VER: $DIAGRAM_TITLE\t
 right header Author: $AUTHOR
 
 !if ($HELP == true )
-  note across
+  note as FLOATING
     **HELP Menu:**
     \t
     Used Variables:
