@@ -1,9 +1,11 @@
 @startuml
 
+!$DIAGRAM_TYPE = "SEQ"
+
 !include https://raw.githubusercontent.com/golyshkin/DEVPROM_link_fixer/refs/heads/main/tmp/sw_catalog/settings/common.puml
 
 'Configuration'
-autonumber 1.1 " #.#"
+autonumber 1.1 "#.#"
 skinparam SequenceMessagePadding 2
 skinparam roundcorner 10
 !pragma teoz false

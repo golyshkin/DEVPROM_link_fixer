@@ -13,7 +13,14 @@ mainframe $DIAGRAM_ID - $DIAGRAM_VER: $DIAGRAM_TITLE\t
 right header Author: $AUTHOR
 
 !if ($HELP == true )
-  note as FLOATING
+  !if ( $DIAGRAM_TYPE == "SEQ" )
+     note across
+  !elseif ( $DIAGRAM_TYPE == "SM" )
+     note as FLOATING
+  !else
+     note
+  !endif
+  
     **HELP Menu:**
     \t
     Used Variables:
