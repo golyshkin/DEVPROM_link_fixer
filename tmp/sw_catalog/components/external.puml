@@ -2,8 +2,8 @@
 
 ' Start Generic Compoenets Definition
 
-$addActor( "external", "participant", "TBOX", "Telemetric Box" )
-$addActor( "external", "participant", "SGW",  "Secure Gateway" )
+$addActor( "external", "participant", "TBOX", "Telemetric Box", "system" )
+$addActor( "external", "participant", "SGW",  "Secure Gateway", "system" )
 
 ' End Generic Compoenets Definition
 
